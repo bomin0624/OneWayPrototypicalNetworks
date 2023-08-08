@@ -5,5 +5,4 @@ An Implementation of One-Way Prototypical Networks
 |    Model               |  Precision  |    Recall    |   F1-Score   |
 |:----------------------:|:-----------:|:------------:|:------------:|
 |         BERT            |      0.79       |      0.88        |       0.83       |
-| BERT + Forward Correction |      0.79       |     0.88         |      0.83        |
 | One-Way Prototypical Networks|      0.95      |       0.94       |        0.94      |
