@@ -26,6 +26,9 @@
 - Snell, Jake, Kevin Swersky, and Richard Zemel. Prototypical networks for few-shot learning. Advances in neural information processing systems, 2017.
 - 岸本裕大, 村脇有吾, 河原大輔, 黒橋禎夫. 日本語談話関係解析：タスク設計・談話標識の自動認識・ コーパスアノテーション, 自然言語処理, Vol.27, No.4, pp.889-931, 2020.
 
+## Contributors
+- Kohei Oda
+
 ## Contact
 For inquiries, please don't hesitate to email [bominchuang@jaist.ac.jp](mailto:bominchuang@jaist.ac.jp)
 
