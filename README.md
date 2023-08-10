@@ -33,7 +33,10 @@
 |:----------------------:|:-----------:|:------------:|:------------:|
 |       Rule-Based        |      0.73       |       0.34      |     0.47      |
 |         BERT            |      0.79       |      0.88        |       0.83       |
+|     Hybrid model*        |      0.76       |      0.69        |       0.73       |
 | One-Way Prototypical Networks|      0.95      |       0.94       |        0.94      |
+
+* Hybrid model = Rule-Based + BERT + forward correction
 
 ## Embedding Visualization
 - TBD
