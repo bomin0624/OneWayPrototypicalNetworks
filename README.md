@@ -31,7 +31,7 @@
 
 |    Model               |  Precision  |    Recall    |   F1-Score   |
 |:----------------------:|:-----------:|:------------:|:------------:|
-|       Rule-Based        |      0.73       |       0.34      |     0.47      |
+|       Rule-Based        |      0.68       |       0.32      |     0.44      |
 |         BERT            |      0.79       |      0.88        |       0.83       |
 |     Hybrid model*        |      0.76       |      0.69        |       0.73       |
 | One-Way Prototypical Networks|      0.95      |       0.94       |        0.94      |
