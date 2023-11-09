@@ -1,7 +1,5 @@
 *.csv
 *.tsv
-*.jpg
-*.png
 *.pt
 *.json
 *.bin
