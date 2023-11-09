@@ -1,12 +1,8 @@
 accelerate==0.21.0
 alembic==1.12.1
-appdirs @ file:///home/conda/feedstock_root/build_artifacts/appdirs_1603108395799/work
 asttokens==2.0.8
 backcall==0.2.0
-Brotli @ file:///home/conda/feedstock_root/build_artifacts/brotli-split_1648883617327/work
 certifi==2023.7.22
-charset-normalizer @ file:///home/conda/feedstock_root/build_artifacts/charset-normalizer_1688813409104/work
-click @ file:///home/conda/feedstock_root/build_artifacts/click_1689751945043/work
 cmake==3.27.0
 colorlog==6.7.0
 contourpy==1.1.0
