@@ -1,0 +1,16 @@
+*.csv
+*.tsv
+*.jpg
+*.png
+*.pt
+*.json
+*.bin
+*.txt
+*.pth
+*.pyc
+*.log
+*.kieli*
+*.wandb
+*.yaml
+*.ipynb
+*.sh

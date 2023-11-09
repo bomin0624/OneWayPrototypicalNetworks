@@ -3,11 +3,23 @@
 - The dataset is from [Kyoto University Web Document Leads Corpus](https://github.com/ku-nlp/KWDLC) and we modified the dataset to binary classification (KWDLC-R).
 - We set the "CONTINGENCY.Cause" relation sentence pairs as label yes and other discourse relation to no.
 
+## Features
+
+- Utilizes the CL-tohoku BERT-based Japanese language model.
+- Calculates embeddings for discourse relation sentences pairs.
+- Computes the Prototypical Network's forward pass.
+- Provides evaluation metrics such as precision, recall, and F1-score.
+- Includes support for calculating and retrieving embeddings for support and query batches.
+
 ## Model 
 - [cl-tohoku/bert-base-japanese-v2](https://huggingface.co/cl-tohoku/bert-base-japanese-v2)
 
+
 ## Requirements
-- TBD
+
+```
+pip install -r requirements.txt
+```
 
 ## Dataset
 
@@ -18,28 +30,41 @@
 |     Test Data       |    262     | 
 
 
-## Loss Calculation
-- TBD
+## Loss Function
+
+- binary cross-entropy
+
+## Normal Distribution and Probability Calculation
+
+In this implementation, a normal distribution is used to model the similarity between the mean support embedding and query embeddings. The probability of a data point belonging to the positive class is computed based on the distance between these embeddings.
+
+### Normal Distribution
+
+A normal distribution, also known as a Gaussian distribution, is a probability distribution that is symmetric and bell-shaped. It is characterized by two parameters: the mean (μ) and the standard deviation (σ). In your code, a normal distribution with a fixed mean of 0.0 and a standard deviation of `self.std` is used.
+
+The probability density function (PDF) of the normal distribution is defined as:
+
+
+$$f(x) = \frac{1}{\sigma \sqrt{2\pi}} \cdot e^{-\frac{(x - \mu)^2}{2\sigma^2}}$$
+
+
 
 ## Train
-- TBD
+```
+python oneway_test.py
+```
 
 ## Test
-- TBD
+```
+python oneway_test.py
+```
 
-## Performance on KWDLC-R
-
-|    Model               |  Precision  |    Recall    |   F1-Score   |
-|:----------------------:|:-----------:|:------------:|:------------:|
-|       Rule-Based        |      0.68       |       0.32      |     0.44      |
-|         BERT             |      0.79       |      0.88        |       0.83       |
-|     Hybrid model*        |      0.76       |      0.69        |       0.73       |
-| One-Way Prototypical Networks|      0.95      |       0.94       |        0.94      |
-
-* Hybrid model = Rule-Based + BERT
 
 ## Embedding Visualization
-- TBD
+
+```
+python visualize_proto.py
+```
 
 ## Reference
 - A. Kruspe, One-way prototypical networks. arXiv preprint arXiv:1906.00820, 2019.
