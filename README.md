@@ -51,7 +51,7 @@ $$f(x) = \frac{1}{\sigma \sqrt{2\pi}} \cdot e^{-\frac{(x - \mu)^2}{2\sigma^2}}$$
 
 ## Train
 ```
-python oneway_test.py
+python oneway_protoNet.py
 ```
 
 ## Test
