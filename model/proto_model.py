@@ -1,8 +1,12 @@
+"""
+This module defines the PrototypicalNetwork class for text classification.
+"""
 import torch
-import torch.nn as nn
+from torch import nn
 from torch.distributions import normal
-import torch.nn.functional as F
 from transformers import AutoTokenizer, AutoModel
+
+# pylint: disable=E1101
 
 
 # Initialize the prototypical network
@@ -12,7 +16,6 @@ class PrototypicalNetwork(nn.Module):
         self.model_name = 'cl-tohoku/bert-base-japanese-v2'
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
         self.model = AutoModel.from_pretrained(self.model_name)
-        # self.linear = nn.Linear(768, 256)
         self.std = 1.0
         self.m = normal.Normal(torch.tensor([0.0]).to(
             device), torch.tensor([self.std]).to(device))
@@ -20,8 +23,7 @@ class PrototypicalNetwork(nn.Module):
     def calculate_embeddings(self, df, device):
         sentences1 = df['sentence1'].tolist()
         sentences2 = df['sentence2'].tolist()
-        sentences = [(sentence1, sentence2) for sentence1,
-                     sentence2 in zip(sentences1, sentences2)]
+        sentences = list(zip(sentences1, sentences2))
         encoded_pair = self.tokenizer.batch_encode_plus(
             sentences, padding='max_length', truncation=True, max_length=512, return_tensors='pt')
         input_ids = encoded_pair['input_ids']
@@ -46,21 +48,25 @@ class PrototypicalNetwork(nn.Module):
                                             query_embeddings, dim=1)
 
         # normal distribution
-        probs = torch.exp(-(distances_mean_queries *
-                          distances_mean_queries / 2.0))
-        probs = torch.max(probs,
-                          torch.tensor(1e-6).to(device))
-        probs = torch.min(probs,
-                          torch.tensor(1.0-(1e-6)).to(device))
-        # print(probs)
+        # probs = torch.exp(-(distances_mean_queries *
+        #                   distances_mean_queries / 2.0))
+        # probs = torch.max(probs,
+        #                   torch.tensor(1e-6).to(device))
+        # probs = torch.min(probs,
+        #                   torch.tensor(1.0-(1e-6)).to(device))
+        probs = torch.clamp(
+            torch.exp(-0.5 * distances_mean_queries**2), min=1e-6, max=1 - 1e-6)
 
         labels = query_batch['label']
-        targets = [1.0 if label == 'yes' else 0.0 for label in labels]
-        targets = torch.tensor(targets).to(device)
+        targets = torch.tensor(
+            [1.0 if label == 'yes' else 0.0 for label in labels], device=device)
+        # targets = [1.0 if label == 'yes' else 0.0 for label in labels]
+        # targets = torch.tensor(targets).to(device)
 
         # binary cross-entropy loss function
-        loss = (-targets * torch.log(probs) - (1.0 - targets)
-                * torch.log(1.0 - probs)).mean()
+        loss = -targets * torch.log(probs) - \
+            (1.0 - targets) * torch.log(1.0 - probs)
+        loss = loss.mean()
 
         return loss
 

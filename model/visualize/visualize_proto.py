@@ -3,8 +3,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
 from Dataset import KWDLC
-from Proto_model import PrototypicalNetwork
+from OneWayPrototypicalNetworks.model.proto_model import PrototypicalNetwork
 import utils
+
+# pylint: disable=E1101
 
 
 def tsne_function(preds, labels, save_path):

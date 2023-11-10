@@ -1,12 +1,11 @@
 import torch
 import wandb
-import pandas as pd
-import torch.nn.functional as F
-from data_loader import PrototypicalNetworkDataLoader, EvalPrototypicalNetworkDataLoader
-from Proto_model import PrototypicalNetwork
 import utils
+from data.data_loader import PrototypicalNetworkDataLoader, EvalPrototypicalNetworkDataLoader
+from proto_model import PrototypicalNetwork
 
 
+# pylint: disable=E1101
 def main():
     utils.torch_fix_seed()
 

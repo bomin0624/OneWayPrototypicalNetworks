@@ -1,8 +1,9 @@
 import torch
-import torch.nn.functional as F
 from data_loader import PrototypicalNetworkDataLoader, EvalPrototypicalNetworkDataLoader
-from Proto_model import PrototypicalNetwork
+from OneWayPrototypicalNetworks.model.proto_model import PrototypicalNetwork
 import utils
+
+# pylint: disable=E1101
 
 
 def main():
