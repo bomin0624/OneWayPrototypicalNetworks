@@ -5,5 +5,5 @@
 *.pyc
 *.log
 *.kieli*
-*.wandb
 *.yaml
+wandb/
