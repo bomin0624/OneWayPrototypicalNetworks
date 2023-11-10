@@ -1,15 +1,18 @@
-name: Python Code Format Check
+name: Python CI
 
 on:
   push:
     branches:
-      - main 
+      - main  # Change this to your project's main branch
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -18,9 +21,8 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-        pip install black
-        
-    - name: Check and fix code formatting with black
-      run: |
-        black --check .  # Check code formatting with black (no changes)
 
+    - name: Check code formatting
+      run: |
+        pip install black
+        black --check .
