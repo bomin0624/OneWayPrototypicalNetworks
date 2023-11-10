@@ -5,7 +5,6 @@ from data.data_loader import PrototypicalNetworkDataLoader, EvalPrototypicalNetw
 from proto_model import PrototypicalNetwork
 
 
-# pylint: disable=E1101
 def main():
     utils.torch_fix_seed()
 

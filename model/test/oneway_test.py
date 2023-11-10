@@ -1,9 +1,7 @@
 import torch
-from data_loader import PrototypicalNetworkDataLoader, EvalPrototypicalNetworkDataLoader
+from data.data_loader import PrototypicalNetworkDataLoader, EvalPrototypicalNetworkDataLoader
 from OneWayPrototypicalNetworks.model.proto_model import PrototypicalNetwork
 import utils
-
-# pylint: disable=E1101
 
 
 def main():
