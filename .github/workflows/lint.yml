@@ -1,12 +1,12 @@
-name: Python CI
+name: Python Code Format Check
 
 on:
   push:
     branches:
-      - main  # Change this to your project's main branch
+      - main 
 
 jobs:
-  build:
+  format-check:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,8 +16,17 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.9 
+        python-version: 3.9
 
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
+        python -m pip install --upgrade pip
+        pip install flake8 black
+
+    - name: Check code formatting with flake8
+      run: |
+        flake8 --count .  # Check for PEP8 compliance
+
+    - name: Check and fix code formatting with black
+      run: |
+        black --check .  # Check code formatting with black (no changes)
