@@ -73,7 +73,7 @@ python visualize_proto.py
 
 ## 貢獻者
 - Kohei Oda - [Github](https://github.com/IEHOKADO)
-- Heine Chu
+- Heine Chu - [Github](https://github.com/HeineHIHI)
 
 ## 聯繫方式
 如有任何疑問，請隨時發送電子郵件至 [bominchuang@jaist.ac.jp](mailto:bominchuang@jaist.ac.jp)
